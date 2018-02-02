@@ -1,6 +1,6 @@
 {
     "app-id": "work.openpaper.Paperwork",
-    "branch": "stable",
+    "branch": "master",
     "runtime": "org.gnome.Platform",
     "runtime-version": "3.26",
     "sdk": "org.gnome.Sdk",
@@ -13,15 +13,15 @@
         "--socket=wayland",
         "--filesystem=home",
         "--talk-name=org.freedesktop.Notifications",
-        "--talk-name=org.freedesktop.DBus",
-        "--socket=session-bus",
-        "--own-name=work.openpaper.paperwork"
+        "--own-name=work.openpaper.paperwork",
+        "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
+        "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
     "modules": [
         "shared-modules/tesseract-3.05.01.json",
         "shared-modules/sane-backends-1.0.27.json",
         {
-            "name" :"python-six",
+            "name": "python-six",
             "no-autogen": true,
             "sources": [
                 {
@@ -37,7 +37,7 @@
             ]
         },
         {
-            "name" :"python-dateutil",
+            "name": "python-dateutil",
             "no-autogen": true,
             "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
             "sources": [
@@ -71,7 +71,7 @@
             ]
         },
         {
-            "name" :"python-pillow",
+            "name": "python-pillow",
             "no-autogen": true,
             "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
             "sources": [
@@ -95,7 +95,7 @@
             ],
             "modules": [
                 {
-                    "name" :"python-olefile",
+                    "name": "python-olefile",
                     "no-autogen": true,
                     "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
                     "sources": [
@@ -114,7 +114,7 @@
             ]
         },
         {
-            "name" :"python-pycountry",
+            "name": "python-pycountry",
             "no-autogen": true,
             "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
             "sources": [
@@ -131,7 +131,7 @@
             ]
         },
         {
-            "name" :"python-nose",
+            "name": "python-nose",
             "no-autogen": true,
             "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
             "sources": [
@@ -148,7 +148,7 @@
             ]
         },
         {
-            "name" :"python-pyinsane2",
+            "name": "python-pyinsane2",
             "no-autogen": true,
             "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
             "sources": [
@@ -165,7 +165,7 @@
             ]
         },
         {
-            "name" :"python-pyocr",
+            "name": "python-pyocr",
             "no-autogen": true,
             "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
             "sources": [
@@ -182,7 +182,7 @@
             ]
         },
         {
-            "name" :"python-pypillowfight",
+            "name": "python-pypillowfight",
             "no-autogen": true,
             "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
             "sources": [
@@ -199,7 +199,7 @@
             ]
         },
         {
-            "name" :"python-pyxdg",
+            "name": "python-pyxdg",
             "no-autogen": true,
             "ensure-writable": ["/lib/python*/site-packages/easy-install.pth","/lib/python*/site-packages/setuptools.pth"],
             "sources": [
@@ -216,7 +216,7 @@
             ]
         },
         {
-            "name" :"python-pydbus",
+            "name": "python-pydbus",
             "no-autogen": true,
             "ensure-writable": ["/lib/python*/site-packages/easy-install.pth","/lib/python*/site-packages/setuptools.pth"],
             "sources": [
@@ -233,7 +233,7 @@
             ]
         },
         {
-            "name" :"python-paperwork-backend",
+            "name": "python-paperwork-backend",
             "no-autogen": true,
             "ensure-writable": [
                     "/lib/python*/site-packages/easy-install.pth",
@@ -242,15 +242,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://pypi.python.org/packages/05/36/08c1f5ff9ade9611be788455ed6cac50b3779353d0e8c5594b73df2afe57/paperwork-backend-1.2.2.tar.gz",
-                    "sha256": "2d7a957b33592c9bf3107103ed129c81188ca4a1c9052e38cbe583452f0fee0a"
-                },
-                {
-                    "type": "patch",
-                    "path": "python-paperwork-backend-fix-flatpak-support.diff",
-                    "strip-components": 1,
-                    "dest": ".",
-                    "use-git": true
+                    "url": "https://pypi.python.org/packages/3f/b9/8cae7c26a9a56a06fa3b1b3c5fc97f633a9a3f543a2a92f9a96edb7df8c0/paperwork-backend-1.2.3.tar.gz",
+                    "sha256": "b25aacb754f123465f77ebfbd68adf083025fbc3b240bf8f6cd4019dd9a91bd1"
                 },
                 {
                     "type": "file",
@@ -260,7 +253,7 @@
             ],
             "modules": [
                 {
-                    "name" :"python-natsort",
+                    "name": "python-natsort",
                     "no-autogen": true,
                     "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
                     "sources": [
@@ -277,7 +270,7 @@
                     ]
                 },
                 {
-                    "name" :"python-pyenchant",
+                    "name": "python-pyenchant",
                     "no-autogen": true,
                     "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
                     "sources": [
@@ -294,7 +287,7 @@
                     ]
                 },
                 {
-                    "name" :"python-simplebayes",
+                    "name": "python-simplebayes",
                     "no-autogen": true,
                     "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
                     "sources": [
@@ -311,7 +304,7 @@
                     ]
                 },
                 {
-                    "name" :"python-whoosh",
+                    "name": "python-whoosh",
                     "no-autogen": true,
                     "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
                     "sources": [
@@ -328,7 +321,7 @@
                     ]
                 },
                 {
-                    "name" :"python-termcolor",
+                    "name": "python-termcolor",
                     "no-autogen": true,
                     "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
                     "sources": [
@@ -345,7 +338,7 @@
                     ]
                 },
                 {
-                    "name" :"python-setuptools",
+                    "name": "python-setuptools",
                     "no-autogen": true,
                     "ensure-writable": ["/lib/python*/site-packages/easy-install.pth","/lib/python*/site-packages/setuptools.pth"],
                     "sources": [
@@ -376,6 +369,7 @@
         },
         {
             "name": "poppler",
+            "buildsystem": "autotools",
             "config-opts": [
                 "--enable-libopenjpeg=none",
                 "--enable-xpdf-headers"
@@ -400,8 +394,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://pypi.python.org/packages/11/c9/7027fd39165666236faffa3a5a6ebc9d9c4732df36684b0c5e9b6a675e56/paperwork-1.2.2.tar.gz",
-                    "sha256": "18fe3bccd5f9ad16e920baa88985b7e9ba36858b83cdf43cb3591be59cbfc50f"
+                    "url": "https://pypi.python.org/packages/a2/4f/dbc66c0338307528a8ca95a875aeb5bbd12c353723fcd43852cebaa8c715/paperwork-1.2.3.tar.gz",
+                    "sha256": "0a715c4aa292d2da73f1a1840d59b628f4907553f30a8557f30041625bab7883"
                 },
                 {
                     "type": "file",
