@@ -2,112 +2,81 @@
     "app-id": "work.openpaper.Paperwork",
     "branch": "stable",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.26",
+    "runtime-version": "3.30",
     "sdk": "org.gnome.Sdk",
     "command": "paperwork",
     "copy-icon": true,
     "finish-args": [
         "--share=ipc",
         "--share=network",
-        "--socket=x11",
+        "--socket=fallback-x11",
         "--socket=wayland",
         "--filesystem=home",
         "--talk-name=org.freedesktop.Notifications",
-        "--own-name=work.openpaper.paperwork",
-        "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
-        "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+        "--own-name=work.openpaper.paperwork"
     ],
     "modules": [
-        "shared-modules/tesseract-3.05.01.json",
-        "shared-modules/sane-backends-1.0.27.json",
-        {
-            "name": "python-six",
-            "no-autogen": true,
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://pypi.python.org/packages/b3/b2/238e2590826bfdd113244a40d9d3eb26918bd798fc187e2360a8367068db/six-1.10.0.tar.gz",
-                    "sha256": "105f8d68616f8248e24bf0e9372ef04d3cc10104f1980f54d57b2ce73a5ad56a"
-                },
-                {
-                    "type": "file",
-                    "path": "pip-Makefile",
-                    "dest-filename": "Makefile"
-                }
-            ]
-        },
+        "modules/tesseract-4.0.0.json",
+        "modules/sane-backends-1.0.27.json",
         {
             "name": "python-dateutil",
-            "no-autogen": true,
-            "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=${FLATPAK_DEST} python_dateutil-2.8.0-py2.py3-none-any.whl"
+            ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://pypi.python.org/packages/51/fc/39a3fbde6864942e8bb24c93663734b74e281b984d1b8c4f95d64b0c21f6/python-dateutil-2.6.0.tar.gz",
-                    "sha256": "62a2f8df3d66f878373fd0072eacf4ee52194ba302e00082828e0d263b0418d2"
-                },
-                {
                     "type": "file",
-                    "path": "pip-Makefile",
-                    "dest-filename": "Makefile"
+                    "url": "https://files.pythonhosted.org/packages/41/17/c62faccbfbd163c7f57f3844689e3a78bae1f403648a6afb1d0866d87fbb/python_dateutil-2.8.0-py2.py3-none-any.whl",
+                    "sha256": "7e6584c74aeed623791615e26efd690f29817a27c73085b78e4bad02493df2fb"
                 }
             ]
         },
         {
             "name": "python-Levenshtein",
-            "no-autogen": true,
-            "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=${FLATPAK_DEST} --optimize=1"
+            ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://pypi.python.org/packages/42/a9/d1785c85ebf9b7dfacd08938dd028209c34a0ea3b1bcdb895208bd40a67d/python-Levenshtein-0.12.0.tar.gz",
+                    "url": "https://files.pythonhosted.org/packages/42/a9/d1785c85ebf9b7dfacd08938dd028209c34a0ea3b1bcdb895208bd40a67d/python-Levenshtein-0.12.0.tar.gz",
                     "sha256": "033a11de5e3d19ea25c9302d11224e1a1898fe5abd23c61c7c360c25195e3eb1"
-                },
-                {
-                    "type": "file",
-                    "path": "pip-Makefile",
-                    "dest-filename": "Makefile"
                 }
             ]
         },
         {
             "name": "python-pillow",
-            "no-autogen": true,
-            "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
+            "ensure-writable": [
+                "/lib/python*/site-packages/easy-install.pth"
+            ],
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=${FLATPAK_DEST} --optimize=1"
+            ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://pypi.python.org/packages/93/73/66854f63b1941aad9af18a1de59f9cf95ad1a87c801540222e332f6688d7/Pillow-4.1.1.tar.gz",
-                    "sha256": "00b6a5f28d00f720235a937ebc2f50f4292a5c7e2d6ab9a8b26153b625c4f431"
-                },
-                {
-                    "type": "file",
-                    "path": "pip-Makefile",
-                    "dest-filename": "Makefile"
-                },
-                {
-                    "type": "patch",
-                    "path": "python-pillow-disable-multithreaded-compilation.diff",
-                    "strip-components": 0,
-                    "dest": ".",
-                    "use-git": false
+                    "url": "https://files.pythonhosted.org/packages/3c/7e/443be24431324bd34d22dd9d11cc845d995bcd3b500676bcf23142756975/Pillow-5.4.1.tar.gz",
+                    "sha256": "5233664eadfa342c639b9b9977190d64ad7aca4edc51a966394d7e08e7f38a9f"
                 }
             ],
             "modules": [
                 {
                     "name": "python-olefile",
-                    "no-autogen": true,
-                    "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
+                    "ensure-writable": [
+                        "/lib/python*/site-packages/easy-install.pth"
+                    ],
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "python3 setup.py install --prefix=${FLATPAK_DEST} --optimize=1"
+                    ],
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://pypi.python.org/packages/35/17/c15d41d5a8f8b98cc3df25eb00c5cee76193114c78e5674df6ef4ac92647/olefile-0.44.zip",
-                            "sha256": "61f2ca0cd0aa77279eb943c07f607438edf374096b66332fae1ee64a6f0f73ad"
-                        },
-                        {
-                            "type": "file",
-                            "path": "pip-Makefile",
-                            "dest-filename": "Makefile"
+                            "url": "https://files.pythonhosted.org/packages/34/81/e1ac43c6b45b4c5f8d9352396a14144bba52c8fec72a80f425f6a4d653ad/olefile-0.46.zip",
+                            "sha256": "133b031eaf8fd2c9399b78b8bc5b8fcbe4c31e85295749bb17a87cba8f3c3964"
                         }
                     ]
                 }
@@ -115,291 +84,261 @@
         },
         {
             "name": "python-pycountry",
-            "no-autogen": true,
-            "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=${FLATPAK_DEST} pycountry-18.12.8-py2.py3-none-any.whl"
+            ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://pypi.python.org/packages/4b/51/9155a48faed108db64a0ff45227c752fda8126f3585475cef30b7abaa536/pycountry-17.1.8.tar.gz",
-                    "sha256": "c5ccad49e47caee92779bf83da81565159b1fe3d8f48b063068ac118b73dd1f8"
-                },
-                {
                     "type": "file",
-                    "path": "pip-Makefile",
-                    "dest-filename": "Makefile"
+                    "url": "https://files.pythonhosted.org/packages/f8/39/04d8215fddd5b263beb36cc324e5656714a19081cacb2fc7c8e6afc2817d/pycountry-18.12.8-py2.py3-none-any.whl",
+                    "sha256": "104a8ca94c700898c42a0172da2eab5a5675c49637b729a11db9e1dac2d983cd"
                 }
             ]
         },
         {
             "name": "python-nose",
-            "no-autogen": true,
-            "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=${FLATPAK_DEST} nose-1.3.7-py3-none-any.whl"
+            ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://pypi.python.org/packages/58/a5/0dc93c3ec33f4e281849523a5a913fa1eea9a3068acfa754d44d88107a44/nose-1.3.7.tar.gz",
-                    "sha256": "f1bffef9cbc82628f6e7d7b40d7e255aefaa1adb6a1b1d26c69a8b79e6208a98"
-                },
-                {
                     "type": "file",
-                    "path": "pip-Makefile",
-                    "dest-filename": "Makefile"
+                    "url": "https://files.pythonhosted.org/packages/15/d8/dd071918c040f50fa1cf80da16423af51ff8ce4a0f2399b7bf8de45ac3d9/nose-1.3.7-py3-none-any.whl",
+                    "sha256": "9ff7c6cc443f8c51994b34a667bbcf45afd6d945be7477b52e97516fd17c53ac"
                 }
             ]
         },
         {
             "name": "python-pyinsane2",
-            "no-autogen": true,
-            "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
+            "ensure-writable": [
+                "/lib/python*/site-packages/easy-install.pth"
+            ],
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=${FLATPAK_DEST} --optimize=1"
+            ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://pypi.python.org/packages/89/02/d516f6676ce668626275207e1bb4567404c900854157ea2d1b9b1f2bc2b6/pyinsane2-2.0.9.tar.gz",
-                    "sha256": "879cecc7679acac0129b5e3e297236197cbd6991a89faa6dadfae89ce10f8abc"
-                },
-                {
-                    "type": "file",
-                    "path": "pip-Makefile",
-                    "dest-filename": "Makefile"
+                    "url": "https://files.pythonhosted.org/packages/11/f5/04c190d47d8874d247e307ce52c3ee1e6a5f47f7fd4715b555eaf5408921/pyinsane2-2.0.13.tar.gz",
+                    "sha256": "0d519531d552e4512776225eb400a6a4a9bfc83a08918ec7fea19cb2fa7ec4ee"
                 }
             ]
         },
         {
             "name": "python-pyocr",
-            "no-autogen": true,
-            "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
+            "ensure-writable": [
+                "/lib/python*/site-packages/easy-install.pth"
+            ],
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=${FLATPAK_DEST} --optimize=1"
+            ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://pypi.python.org/packages/08/ba/2f3a9f05db05826831b7df5d3c5b3b6d0705819414b2bb5ecfb10c737cf1/pyocr-0.5.1.tar.gz",
-                    "sha256": "9ee8b5f38dd966ca531115fc5fe4715f7fa8961a9f14cd5109c2d938c17a2043"
-                },
-                {
-                    "type": "file",
-                    "path": "pip-Makefile",
-                    "dest-filename": "Makefile"
+                    "url": "https://files.pythonhosted.org/packages/27/01/56adc4939fc96db5676d4a0ab8f8a048a9a40dedef0567a543e87198dd3c/pyocr-0.6.tar.gz",
+                    "sha256": "0857a814f5c74186f79b2080792f5a17b5e7c613696df23e0d1cdc5597cab2e3"
                 }
             ]
         },
         {
             "name": "python-pypillowfight",
-            "no-autogen": true,
-            "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
+            "ensure-writable": [
+                "/lib/python*/site-packages/easy-install.pth"
+            ],
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=${FLATPAK_DEST} --optimize=1"
+            ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://pypi.python.org/packages/90/70/575e3d04d581e04dccefd52cbb75e26aa07934147b2e85f3fa2896e61eed/pypillowfight-0.2.4.tar.gz",
+                    "url": "https://files.pythonhosted.org/packages/90/70/575e3d04d581e04dccefd52cbb75e26aa07934147b2e85f3fa2896e61eed/pypillowfight-0.2.4.tar.gz",
                     "sha256": "9208518494df900b8842b3d826c55ff673127634bdb2d2c85cca93b5017fd061"
-                },
-                {
-                    "type": "file",
-                    "path": "pip-Makefile",
-                    "dest-filename": "Makefile"
                 }
             ]
         },
         {
             "name": "python-pyxdg",
-            "no-autogen": true,
-            "ensure-writable": ["/lib/python*/site-packages/easy-install.pth","/lib/python*/site-packages/setuptools.pth"],
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=${FLATPAK_DEST} pyxdg-0.26-py2.py3-none-any.whl"
+            ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://pypi.python.org/packages/26/28/ee953bd2c030ae5a9e9a0ff68e5912bd90ee50ae766871151cd2572ca570/pyxdg-0.25.tar.gz",
-                    "sha256": "81e883e0b9517d624e8b0499eb267b82a815c0b7146d5269f364988ae031279d"
-                },
-                {
                     "type": "file",
-                    "path": "pip-Makefile",
-                    "dest-filename": "Makefile"
+                    "url": "https://files.pythonhosted.org/packages/39/03/12eb9062f43adb94e30f366743cb5c83fd15fef026500cd4de42c7c12280/pyxdg-0.26-py2.py3-none-any.whl",
+                    "sha256": "1948ff8e2db02156c0cccd2529b43c0cff56ebaa71f5f021bbd755bc1419190e"
                 }
             ]
         },
         {
             "name": "python-pydbus",
-            "no-autogen": true,
-            "ensure-writable": ["/lib/python*/site-packages/easy-install.pth","/lib/python*/site-packages/setuptools.pth"],
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=${FLATPAK_DEST} pydbus-0.6.0-py2.py3-none-any.whl"
+            ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://pypi.python.org/packages/58/56/3e84f2c1f2e39b9ea132460183f123af41e3b9c8befe222a35636baa6a5a/pydbus-0.6.0.tar.gz",
-                    "sha256": "4207162eff54223822c185da06c1ba8a34137a9602f3da5a528eedf3f78d0f2c"
-                },
-                {
                     "type": "file",
-                    "path": "pip-Makefile",
-                    "dest-filename": "Makefile"
+                    "url": "https://files.pythonhosted.org/packages/92/56/27148014c2f85ce70332f18612f921f682395c7d4e91ec103783be4fce00/pydbus-0.6.0-py2.py3-none-any.whl",
+                    "sha256": "66b80106352a718d80d6c681dc2a82588048e30b75aab933e4020eb0660bf85e"
                 }
             ]
         },
         {
-                "name": "python-natsort",
-                "no-autogen": true,
-                "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
-                "sources": [
-                        {
-                                "type": "archive",
-                                "url": "https://pypi.python.org/packages/8e/6b/a4e3031e573ef29a251984ac0a6bd26cedac6f5e67a7607c9746bd64b3fe/natsort-5.0.3.tar.gz",
-                                "sha256": "d57b7a0156f16f49c6c010c9ce97e2125956697846f31bba7cd544cd24b007c1"
-                        },
-                        {
-                                "type": "file",
-                                "path": "pip-Makefile",
-                                "dest-filename": "Makefile"
-                        }
-                ]
+            "name": "python-natsort",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=${FLATPAK_DEST} natsort-6.0.0-py2.py3-none-any.whl"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/e7/13/a66bfa0ebf00e17778ca0319d081be686a33384d1f612fc8e0fc542ac5d8/natsort-6.0.0-py2.py3-none-any.whl",
+                    "sha256": "83a8c36b1b2321705d4d7814a7aaf91d0e1bcb7bff119a6ebfe5c9ce3b332d0e"
+                }
+            ]
         },
         {
-                "name": "python-pyenchant",
-                "no-autogen": true,
-                "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
-                "sources": [
-                        {
-                                "type": "archive",
-                                "url": "https://pypi.python.org/packages/73/73/49f95fe636ab3deed0ef1e3b9087902413bcdf74ec00298c3059e660cfbb/pyenchant-1.6.8.tar.gz",
-                                "sha256": "7ead2ee74f1a4fc2a7199b3d6012eaaaceea03fbcadcb5df67d2f9d0d51f050a"
-                        },
-                        {
-                                "type": "file",
-                                "path": "pip-Makefile",
-                                "dest-filename": "Makefile"
-                        }
-                ]
-        },
-        {
-                "name": "python-simplebayes",
-                "no-autogen": true,
-                "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
-                "sources": [
-                        {
-                                "type": "archive",
-                                "url": "https://pypi.python.org/packages/b9/73/764578df72934940d95a8941cbd374b56319562dda72630fc8bfeaefc350/simplebayes-1.5.8.tar.gz",
-                                "sha256": "363418c0ef185ac2158ebbd6d8afb45aa997254fcb809a73ed20a7d5dccf8b85"
-                        },
-                        {
-                                "type": "file",
-                                "path": "pip-Makefile",
-                                "dest-filename": "Makefile"
-                        }
-                ]
-        },
-        {
-                "name": "python-whoosh",
-                "no-autogen": true,
-                "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
-                "sources": [
-                        {
-                                "type": "archive",
-                                "url": "https://pypi.python.org/packages/25/2b/6beed2107b148edc1321da0d489afc4617b9ed317ef7b72d4993cad9b684/Whoosh-2.7.4.tar.gz",
-                                "sha256": "7ca5633dbfa9e0e0fa400d3151a8a0c4bec53bd2ecedc0a67705b17565c31a83"
-                        },
-                        {
-                                "type": "file",
-                                "path": "pip-Makefile",
-                                "dest-filename": "Makefile"
-                        }
-                ]
-        },
-        {
-                "name": "python-termcolor",
-                "no-autogen": true,
-                "ensure-writable": ["/lib/python*/site-packages/easy-install.pth"],
-                "sources": [
-                        {
-                                "type": "archive",
-                                "url": "https://pypi.python.org/packages/8a/48/a76be51647d0eb9f10e2a4511bf3ffb8cc1e6b14e9e4fab46173aa79f981/termcolor-1.1.0.tar.gz",
-                                "sha256": "1d6d69ce66211143803fbc56652b41d73b4a400a2891d7bf7a1cdf4c02de613b"
-                        },
-                        {
-                                "type": "file",
-                                "path": "pip-Makefile",
-                                "dest-filename": "Makefile"
-                        }
-                ]
-        },
-        {
-                "name": "python-setuptools",
-                "no-autogen": true,
-                "ensure-writable": ["/lib/python*/site-packages/easy-install.pth","/lib/python*/site-packages/setuptools.pth"],
-                "sources": [
-                        {
-                                "type": "archive",
-                                "url": "https://pypi.python.org/packages/a9/23/720c7558ba6ad3e0f5ad01e0d6ea2288b486da32f053c73e259f7c392042/setuptools-36.0.1.zip",
-                                "sha256": "e17c4687fddd6d70a6604ac0ad25e33324cec71b5137267dd5c45e103c4b288a"
-                        },
-                        {
-                                "type": "file",
-                                "path": "pip-Makefile",
-                                "dest-filename": "Makefile"
-                        }
-                ]
-        },
-        {
-            "name": "poppler-data",
-            "buildsystem": "cmake",
+            "name": "python-pyenchant",
+            "ensure-writable": [
+                "/lib/python*/site-packages/easy-install.pth"
+            ],
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=${FLATPAK_DEST} --optimize=1"
+            ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://poppler.freedesktop.org/poppler-data-0.4.7.tar.gz",
-                    "sha256": "e752b0d88a7aba54574152143e7bf76436a7ef51977c55d6bd9a48dccde3a7de"
+                    "url": "https://files.pythonhosted.org/packages/9e/54/04d88a59efa33fefb88133ceb638cdf754319030c28aadc5a379d82140ed/pyenchant-2.0.0.tar.gz",
+                    "sha256": "fc31cda72ace001da8fe5d42f11c26e514a91fa8c70468739216ddd8de64e2a0"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "enchant",
+                    "config-opts": [
+                        "--disable-static",
+                        "--with-pic"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/AbiWord/enchant/releases/download/enchant-1-6-1/enchant-1.6.1.tar.gz",
+                            "sha256": "bef0d9c0fef2e4e8746956b68e4d6c6641f6b85bd2908d91731efb68eba9e3f5"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "python-simplebayes",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=${FLATPAK_DEST} simplebayes-1.5.8-py2.py3-none-any.whl"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/80/40/952739a8c9ba040a8adaba409d6cd3a7a7ed532a7cf4b9f7c6b39af078f9/simplebayes-1.5.8-py2.py3-none-any.whl",
+                    "sha256": "fd434b950f4ab1bfe8686a8c87c41d37d943a651870571addddb6885092547a9"
+                }
+            ]
+        },
+        {
+            "name": "python-whoosh",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=${FLATPAK_DEST} Whoosh-2.7.4-py2.py3-none-any.whl"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/ba/19/24d0f1f454a2c1eb689ca28d2f178db81e5024f42d82729a4ff6771155cf/Whoosh-2.7.4-py2.py3-none-any.whl",
+                    "sha256": "aa39c3c3426e3fd107dcb4bde64ca1e276a65a889d9085a6e4b54ba82420a852"
+                }
+            ]
+        },
+        {
+            "name": "python-termcolor",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=${FLATPAK_DEST} --optimize=1"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://files.pythonhosted.org/packages/8a/48/a76be51647d0eb9f10e2a4511bf3ffb8cc1e6b14e9e4fab46173aa79f981/termcolor-1.1.0.tar.gz",
+                    "sha256": "1d6d69ce66211143803fbc56652b41d73b4a400a2891d7bf7a1cdf4c02de613b"
+                }
+            ]
+        },
+        {
+            "name": "poppler-data",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://poppler.freedesktop.org/poppler-data-0.4.9.tar.gz",
+                    "sha256": "1f9c7e7de9ecd0db6ab287349e31bf815ca108a5a175cf906a90163bdbe32012"
                 }
             ]
         },
         {
             "name": "poppler",
-            "buildsystem": "autotools",
+            "buildsystem": "cmake-ninja",
             "config-opts": [
-                "--enable-libopenjpeg=none",
-                "--enable-xpdf-headers"
+                "-DENABLE_LIBOPENJPEG:STRING=none"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://poppler.freedesktop.org/poppler-0.55.0.tar.xz",
-                    "sha256": "537f2bc60d796525705ad9ca8e46899dcc99c2e9480b80051808bae265cdc658"
+                    "url": "https://poppler.freedesktop.org/poppler-0.74.0.tar.xz",
+                    "sha256": "92e09fd3302567fd36146b36bb707db43ce436e8841219025a82ea9fb0076b2f"
                 }
             ]
         },
         {
             "name": "python-paperwork-backend",
-            "make-install-args": ["PIP_ARGS=--prefix=/app"],
-            "no-autogen": true,
             "ensure-writable": [
-                    "/lib/python*/site-packages/easy-install.pth",
-                    "/lib/python*/site-packages/setuptools.pth"
+                "/lib/python*/site-packages/easy-install.pth",
+                "/lib/python*/site-packages/setuptools.pth"
+            ],
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=${FLATPAK_DEST} --optimize=1"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://pypi.python.org/packages/e6/3c/ba77e8c087e32e2ef1f34b2eff28f7ce0e3f04989e390bfad0a411530345/paperwork-backend-1.2.4.tar.gz",
+                    "url": "https://files.pythonhosted.org/packages/e6/3c/ba77e8c087e32e2ef1f34b2eff28f7ce0e3f04989e390bfad0a411530345/paperwork-backend-1.2.4.tar.gz",
                     "sha256": "cfd54f739e1fb8d7acc5ae4f7ff484cb03be8b2c73be185ec3ea30dc1219c0bb"
-                },
-                {
-                    "type": "file",
-                    "path": "pip-Makefile",
-                    "dest-filename": "Makefile"
                 }
             ]
         },
         {
             "name": "python-paperwork",
-            "make-install-args": ["PIP_ARGS=--prefix=/app"],
-            "no-autogen": true,
             "ensure-writable": [
-                    "/lib/python*/site-packages/easy-install.pth",
-                    "/lib/python*/site-packages/setuptools.pth"
+                "/lib/python*/site-packages/easy-install.pth",
+                "/lib/python*/site-packages/setuptools.pth"
             ],
-            "post-install": ["paperwork-shell install_system /app/share/icons /app/share"],
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py install --prefix=${FLATPAK_DEST} --optimize=1"
+            ],
+            "post-install": [
+                "paperwork-shell install_system /app/share/icons /app/share"
+            ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://pypi.python.org/packages/e1/ee/83ed1ebe896ce4f135a204c8a632a80a931840603f2321ab76287f78db65/paperwork-1.2.4.tar.gz",
+                    "url": "https://files.pythonhosted.org/packages/e1/ee/83ed1ebe896ce4f135a204c8a632a80a931840603f2321ab76287f78db65/paperwork-1.2.4.tar.gz",
                     "sha256": "9045d297076dfc219b62bb994ca46fff53b5a990b2f077946d279f366ae3ab4d"
-                },
-                {
-                    "type": "file",
-                    "path": "pip-Makefile",
-                    "dest-filename": "Makefile"
                 }
             ]
         }

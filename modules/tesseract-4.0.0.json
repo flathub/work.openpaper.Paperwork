@@ -1,57 +1,39 @@
 {
-    "name": "tesseract-bundle",
-    "no-autogen": true,
+    "name": "tesseract",
+    "buildsystem": "autotools",
+    "config-opts": [
+        "--disable-graphics"
+    ],
     "sources": [
         {
-            "type": "file",
-            "path": "noop-Makefile",
-            "dest-filename": "Makefile"
+            "type": "archive",
+            "url": "https://github.com/tesseract-ocr/tesseract/archive/4.0.0.tar.gz",
+            "sha256": "a1f5422ca49a32e5f35c54dee5112b11b99928fc9f4ee6695cdc6768d69f61dd"
         }
     ],
     "modules": [
         {
             "name": "libleptonica",
             "buildsystem": "autotools",
-            "config-opts": [
-            ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/DanBloomberg/leptonica/releases/download/1.74.4/leptonica-1.74.4.tar.gz",
-                    "sha256": "29c35426a416bf454413c6fec24c24a0b633e26144a17e98351b6dffaa4a833b"
-                }
-            ]
-        },
-        {
-            "name": "tesseract",
-            "buildsystem": "autotools",
-            "config-opts": [
-                "--disable-graphics"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/tesseract-ocr/tesseract/archive/3.05.01.tar.gz",
-                    "sha256": "05898f93c5d057fada49b9a116fc86ad9310ff1726a0f499c3e5211b3af47ec1"
+                    "url": "https://github.com/DanBloomberg/leptonica/releases/download/1.77.0/leptonica-1.77.0.tar.gz",
+                    "sha256": "161d0b368091986b6c60990edf257460bdc7da8dd18d48d4179e297bcdca5eb7"
                 }
             ]
         },
         {
             "name": "tessdata",
-            "no-autogen": true,
+            "buildsystem": "simple",
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/tesseract-ocr/tessdata/archive/3.04.00.tar.gz",
-                    "sha256": "5dcb37198336b6953843b461ee535df1401b41008d550fc9e43d0edabca7adb1"
-                },
-                {
-                    "type": "file",
-                    "path": "noop-Makefile",
-                    "dest-filename": "Makefile"
+                    "url": "https://github.com/tesseract-ocr/tessdata/archive/4.0.0.tar.gz",
+                    "sha256": "38c637d3a1763f6c3d32e8f1d979f045668676ec5feb8ee1869ee77cedd31b08"
                 }
             ],
-            "post-install": [
+            "build-commands": [
                 "mkdir -p /app/share/tessdata",
                 "cp eng.traineddata /app/share/tessdata",
                 "cp osd.traineddata /app/share/tessdata",
