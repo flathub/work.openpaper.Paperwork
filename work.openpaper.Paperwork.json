@@ -11,9 +11,12 @@
         "--share=network",
         "--socket=fallback-x11",
         "--socket=wayland",
-        "--filesystem=home",
+        "--filesystem=xdg-documents",
+        "--filesystem=xdg-pictures",
+        "--persist=.python-eggs"
+        "--own-name=work.openpaper.paperwork",
         "--talk-name=org.freedesktop.Notifications",
-        "--own-name=work.openpaper.paperwork"
+        "--talk-name=org.freedesktop.FileManager1",
     ],
     "modules": [
         "modules/tesseract-4.0.0.json",
