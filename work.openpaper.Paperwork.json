@@ -13,10 +13,10 @@
         "--socket=wayland",
         "--filesystem=xdg-documents",
         "--filesystem=xdg-pictures",
-        "--persist=.python-eggs"
+        "--persist=.python-eggs",
         "--own-name=work.openpaper.paperwork",
         "--talk-name=org.freedesktop.Notifications",
-        "--talk-name=org.freedesktop.FileManager1",
+        "--talk-name=org.freedesktop.FileManager1"
     ],
     "modules": [
         "modules/tesseract-4.0.0.json",
