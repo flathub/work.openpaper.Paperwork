@@ -400,14 +400,12 @@
             "post-install": ["paperwork-shell install_system /app/share/icons /app/share"],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/1d/d3/b7ffd1ae7eb5c29f8587145a9cb908e3971fff3d79a6f0322e81c2663089/paperwork-1.3.0.tar.gz",
-                    "sha256": "36c32cad431b0119f34ade74b01168df87731e0967028af509ba95f751dcd2fd"
-                },
-                {
-                    "type": "file",
-                    "path": "pip-Makefile",
-                    "dest-filename": "Makefile"
+                    "comment": "1.3.0 + 1 commit to fix appdata.xml for Flathub build",
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/World/OpenPaperwork/paperwork.git",
+                    "branch": "master",
+                    "commit": "e6d00bc43c6bb2039e37c44041633b4eb3f8c641",
+                    "disable-shallow-clone": true
                 }
             ]
         }
