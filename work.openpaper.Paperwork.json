@@ -202,7 +202,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/World/OpenPaperwork/libinsane.git",
-                    "tag": "1.0.2",
+                    "tag": "1.0.3",
                     "disable-shallow-clone": true
                 }
             ]
@@ -379,8 +379,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/38/55/3776279e0f725ab739ba09f6e7db241cde251eb79dcc5681415cf94a13f9/paperwork-backend-1.3.0.tar.gz",
-                    "sha256": "08262a62c948b1c75f6dce30f290e181ba7f98b212dcbb05f46d71744b50408a"
+                    "url": "https://files.pythonhosted.org/packages/8d/80/293051b9fb7da187ee4dd77b387312c319099f760472ff9b5aedbea27d07/paperwork-backend-1.3.1.tar.gz",
+                    "sha256": "7d0ef35bac1904a981ae40693eb8da99ea65ee644c7def084194824808489fa4"
                 },
                 {
                     "type": "file",
@@ -400,12 +400,14 @@
             "post-install": ["paperwork-shell install_system /app/share/icons /app/share"],
             "sources": [
                 {
-                    "comment": "1.3.0 + 1 commit to fix appdata.xml for Flathub build",
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/World/OpenPaperwork/paperwork.git",
-                    "branch": "master",
-                    "commit": "e6d00bc43c6bb2039e37c44041633b4eb3f8c641",
-                    "disable-shallow-clone": true
+                    "type": "archive",
+                    "url": "https://files.pythonhosted.org/packages/d8/ee/429bb189358a558968a7b01148cd4936e1e0734fc35d1640ba75b7ef2b0c/paperwork-1.3.1.tar.gz",
+                    "sha256": "d8d229cfa4a0fb9118c93f2d3e9d8f8c5b9ec41397ae4864d8ceeefd141743a2"
+                },
+                {
+                    "type": "file",
+                    "path": "pip-Makefile",
+                    "dest-filename": "Makefile"
                 }
             ]
         }
