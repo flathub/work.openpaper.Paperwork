@@ -2,7 +2,7 @@
     "app-id": "work.openpaper.Paperwork",
     "branch": "stable",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.36",
+    "runtime-version": "40",
     "sdk": "org.gnome.Sdk",
     "command": "paperwork-gtk",
     "copy-icon": true,
@@ -301,8 +301,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/1b/12/3238d0226b9b276cb6cda94facc82d55f4efe6c1b218c8c255d7858fb02c/openpaperwork-core-2.0.2.tar.gz",
-                    "sha256": "c60ddafcecd03466ebad2448b3764d9e168b956c484e3030357ba31d28c6b13a"
+                    "url": "https://files.pythonhosted.org/packages/97/fd/e19d66082947c20c9d07599bc1fab66c464e2cef6b89a17e484fdce779c6/openpaperwork-core-2.0.3.tar.gz",
+                    "sha256": "bb2d74babf4c47b7c82985c83f6af370f161ea3a750067d9bede33159f5c9da5"
                 }
             ]
         },
@@ -313,8 +313,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/05/76/89335123b672a4e577ff474591bf1f7080e942be366ef110a538a35a892f/openpaperwork-gtk-2.0.2.tar.gz",
-                    "sha256": "2491a506c6d966096a744a5a274898c3f297d228121fcc6f0e5db394d621c508"
+                    "url": "https://files.pythonhosted.org/packages/7b/6a/b974ffaa83206e53e4730485f5b5ee39d201a1b270d42db16cac662c06cd/openpaperwork-gtk-2.0.3.tar.gz",
+                    "sha256": "99fe7e1a7b37a028a6bfd542e898d9b9607a17c1157974a0bf604395e436ec3a"
                 }
             ]
         },
@@ -325,8 +325,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/0f/43/bc1f8ddf1a80fc3514a6544258e566057bc12b963a8ca9aac1f7acd0f79a/paperwork-backend-2.0.2.tar.gz",
-                    "sha256": "b72914e1ff8d7742f4a07db5db0d0e2ec3cf4bcb9b3bf46dc9fe3dc8199cb8d8"
+                    "url": "https://files.pythonhosted.org/packages/83/a7/9dcbd768fc73dc408513b98e76a6b5a4aae9aaee5dfb2f5ef2fcf4666de7/paperwork-backend-2.0.3.tar.gz",
+                    "sha256": "3f0bd32dbbad43464692ba5f1a457478e16c16f8881c58a89632604a4c5f1afa"
                 }
             ]
         },
@@ -337,8 +337,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/50/b7/6d4029ed9fbb3702f6687c235b1769cf23351ba4b191888735e9a34053f6/paperwork-shell-2.0.2.tar.gz",
-                    "sha256": "9c80590b81a475c94cbb49adef64e0f75c84ea6da814908e6b2b98a70583687a"
+                    "url": "https://files.pythonhosted.org/packages/c2/38/5e0d6bc41b2e5bfd1707bf7e9fd37c959bb37a64b0bcef8b5411fc5c7847/paperwork-shell-2.0.3.tar.gz",
+                    "sha256": "17db4b0dd827710d8a5c4190ea425933912c83306bdfb4c499056a5302b483f5"
                 }
             ]
         },
@@ -352,8 +352,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/09/57/f9f60dd2d724bc7a4be2352d37a9a33e1177acb0c8a962344ca5eb061b29/paperwork-2.0.2.tar.gz",
-                    "sha256": "1a0a161acdd4d8f0741729460b39813a5f1bbbd5ecb032244706f9bcc0189de5"
+                    "url": "https://files.pythonhosted.org/packages/d2/b0/ec3b61c850d075148e7f803c6029ed2c2075a44665d0a3102e393782a7ef/paperwork-2.0.3.tar.gz",
+                    "sha256": "ecf6ef0956105f2cb98acc4fb5c993b535914c40ebcaa95a319891c2b0b1f733"
                 }
             ]
         }
