@@ -6,6 +6,9 @@
     "sdk": "org.gnome.Sdk",
     "command": "paperwork-gtk",
     "copy-icon": true,
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.openjdk11"
+    ],
     "finish-args": [
         "--share=ipc",
         "--share=network",
@@ -17,47 +20,16 @@
         "--talk-name=org.freedesktop.FileManager1",
         "--talk-name=org.gtk.vfs",
         "--talk-name=org.gtk.vfs.*",
-        "--own-name=work.openpaper.paperwork"
+        "--own-name=work.openpaper.paperwork",
+        "--env=JAVA_HOME=/app/jre",
+        "--env=LIBO_FLATPAK=1"
     ],
     "modules": [
+        "shared-modules/setuptools-40.8.0.json",
+        "shared-modules/libreoffice-7.0.4.2.json",
+        "shared-modules/scikit-learn-0.24.0.json",
+        "shared-modules/sane-backends-1.0.32.json",
         "shared-modules/tesseract-4.1.1.json",
-        "shared-modules/sane-backends-1.0.27.json",
-        {
-            "name": "python-setuptools",
-            "buildsystem": "simple",
-            "build-commands": ["python3 setup.py install --prefix=/app --root=/"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/c2/f7/c7b501b783e5a74cf1768bc174ee4fb0a8a6ee5af6afa92274ff964703e0/setuptools-40.8.0.zip",
-                    "sha256": "6e4eec90337e849ade7103723b9a99631c1f0d19990d6e8412dc42f5ae8b304d"
-                }
-            ]
-        },
-        {
-            "name": "python-setuptools-scm",
-            "buildsystem": "simple",
-            "build-commands": ["python3 setup.py install --prefix=/app --root=/"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/54/85/514ba3ca2a022bddd68819f187ae826986051d130ec5b972076e4f58a9f3/setuptools_scm-3.2.0.tar.gz",
-                    "sha256": "52ab47715fa0fc7d8e6cd15168d1a69ba995feb1505131c3e814eb7087b57358"
-                }
-            ]
-        },
-        {
-            "name": "python-setuptools-scm-git-archive",
-            "buildsystem": "simple",
-            "build-commands": ["python3 setup.py install --prefix=/app --root=/"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/7e/2c/0c15b29a1b5940250bfdc4a4f53272e35cd7cf8a34159291b6b4ec9eb291/setuptools_scm_git_archive-1.1.tar.gz",
-                    "sha256": "6026f61089b73fa1b5ee737e95314f41cb512609b393530385ed281d0b46c062"
-                }
-            ]
-        },
         {
             "name": "python-distro",
             "buildsystem": "simple",
@@ -91,22 +63,6 @@
                     "type": "archive",
                     "url": "https://pypi.python.org/packages/42/a9/d1785c85ebf9b7dfacd08938dd028209c34a0ea3b1bcdb895208bd40a67d/python-Levenshtein-0.12.0.tar.gz",
                     "sha256": "033a11de5e3d19ea25c9302d11224e1a1898fe5abd23c61c7c360c25195e3eb1"
-                }
-            ]
-        },
-        {
-            "name": "python-getkey",
-            "buildsystem": "simple",
-            "build-commands": ["python3 setup.py install --prefix=/app --root=/"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/74/f2/3312ea94369f410967667eeca61d261cdf3037df6ea827078ac7c5321150/getkey-0.6.5.tar.gz",
-                    "sha256": "68c7c702c3b34deacf427f6c0f1fd66c5c2aa12d7801aa32442fc1a71c8ce059"
-                },
-                {
-                    "type": "patch",
-                    "path": "getkey-setup.diff"
                 }
             ]
         },
@@ -197,18 +153,6 @@
             ]
         },
         {
-            "name": "python-simplebayes",
-            "buildsystem": "simple",
-            "build-commands": ["python3 setup.py install --prefix=/app --root=/"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://pypi.python.org/packages/b9/73/764578df72934940d95a8941cbd374b56319562dda72630fc8bfeaefc350/simplebayes-1.5.8.tar.gz",
-                    "sha256": "363418c0ef185ac2158ebbd6d8afb45aa997254fcb809a73ed20a7d5dccf8b85"
-                }
-            ]
-        },
-        {
             "name": "python-whoosh",
             "buildsystem": "simple",
             "build-commands": ["python3 setup.py install --prefix=/app --root=/"],
@@ -258,6 +202,23 @@
             ]
         },
         {
+            "name" : "libhandy",
+            "buildsystem" : "meson",
+            "builddir" : true,
+            "config-opts": [
+                "-Dexamples=false",
+                "-Dtests=false"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/libhandy.git",
+                    "tag": "1.2.2",
+                    "commit": "09f36006b26f41a2bb383b0c853e954c5792cfe1"
+                }
+            ]
+        },
+        {
             "name": "libinsane",
             "buildsystem": "meson",
             "sources": [
@@ -301,8 +262,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/97/fd/e19d66082947c20c9d07599bc1fab66c464e2cef6b89a17e484fdce779c6/openpaperwork-core-2.0.3.tar.gz",
-                    "sha256": "bb2d74babf4c47b7c82985c83f6af370f161ea3a750067d9bede33159f5c9da5"
+                    "url": "https://files.pythonhosted.org/packages/34/92/b3ec41c62ba77ea977e46fd75410a7705143127d06baa53ca0dded4ccc5d/openpaperwork-core-2.1.0.tar.gz",
+                    "sha256": "835915de918b6b341862f089b4238bcd2cdb8721f172cd7a1d478e8b96fc8439"
                 }
             ]
         },
@@ -313,8 +274,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/7b/6a/b974ffaa83206e53e4730485f5b5ee39d201a1b270d42db16cac662c06cd/openpaperwork-gtk-2.0.3.tar.gz",
-                    "sha256": "99fe7e1a7b37a028a6bfd542e898d9b9607a17c1157974a0bf604395e436ec3a"
+                    "url": "https://files.pythonhosted.org/packages/60/bf/ca28a1707b844677ce972096fa66de3918b3c2241c3c1bbbbe6c43c1f227/openpaperwork-gtk-2.1.0.tar.gz",
+                    "sha256": "c59d7692b27b894c0230399bd2d16d79d6350021a36fcd3db347fd2dc8552fa3"
                 }
             ]
         },
@@ -325,8 +286,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/83/a7/9dcbd768fc73dc408513b98e76a6b5a4aae9aaee5dfb2f5ef2fcf4666de7/paperwork-backend-2.0.3.tar.gz",
-                    "sha256": "3f0bd32dbbad43464692ba5f1a457478e16c16f8881c58a89632604a4c5f1afa"
+                    "url": "https://files.pythonhosted.org/packages/d7/1f/3d705712a74ac4d594d51191ab06d6d6deff8e3c6c9422464eaadb3476ec/paperwork-backend-2.1.0.tar.gz",
+                    "sha256": "5791b352cd823bde5b6825792398cfe2e5f19664217b904588a7a29349e44c9a"
                 }
             ]
         },
@@ -337,8 +298,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/c2/38/5e0d6bc41b2e5bfd1707bf7e9fd37c959bb37a64b0bcef8b5411fc5c7847/paperwork-shell-2.0.3.tar.gz",
-                    "sha256": "17db4b0dd827710d8a5c4190ea425933912c83306bdfb4c499056a5302b483f5"
+                    "url": "https://files.pythonhosted.org/packages/07/44/37951a7d877f4acddeb35335bc1ac637e14c6fa5338113423234a4f460a8/paperwork-shell-2.1.0.tar.gz",
+                    "sha256": "3da7753da77b9538e33eadfcd4cc065fa1c582fe9345a72fa62e8b9fcd973ff4"
                 }
             ]
         },
@@ -352,10 +313,11 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/d2/b0/ec3b61c850d075148e7f803c6029ed2c2075a44665d0a3102e393782a7ef/paperwork-2.0.3.tar.gz",
-                    "sha256": "ecf6ef0956105f2cb98acc4fb5c993b535914c40ebcaa95a319891c2b0b1f733"
+                    "url": "https://files.pythonhosted.org/packages/1c/1d/2c7714b567af293170ee2a24dcd1080a51d42e8ad6a96a702bcb6d5c9114/paperwork-2.1.0.tar.gz",
+                    "sha256": "6c019d9957e62e5f7133d9bf623e3d38878f27ee29fe5516a84126dbe4a7d798"
                 }
-            ]
+           ]
         }
+
     ]
 }
