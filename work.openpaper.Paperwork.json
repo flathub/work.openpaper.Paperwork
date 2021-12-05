@@ -2,7 +2,7 @@
     "app-id": "work.openpaper.Paperwork",
     "branch": "stable",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "40",
+    "runtime-version": "41",
     "sdk": "org.gnome.Sdk",
     "command": "paperwork-gtk",
     "copy-icon": true,
@@ -25,8 +25,8 @@
         "--env=LIBO_FLATPAK=1"
     ],
     "modules": [
-        "shared-modules/setuptools-40.8.0.json",
-        "shared-modules/libreoffice-7.0.4.2.json",
+        "shared-modules/setuptools-59.5.0.json",
+        "shared-modules/libreoffice-7.2.3.2.json",
         "shared-modules/scikit-learn-0.24.0.json",
         "shared-modules/sane-backends-1.0.32.json",
         "shared-modules/tesseract-4.1.1.json",
@@ -233,12 +233,12 @@
         {
             "name": "python-pyocr",
             "buildsystem": "simple",
-            "build-commands": ["python3 setup.py install --prefix=/app --root=/"],
+            "build-commands": ["ENABLE_SETUTOOLS_SCM=0 python3 ./setup.py install --prefix=/app --root=/"],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/86/17/5fa0edc8da817a7da0198f03319850cb36cf2f20a38b6c7616fcb36211ef/pyocr-0.7.2.tar.gz",
-                    "sha256": "fa15adc7e1cf0d345a2990495fe125a947c6e09a60ddba0256a1c14b2e603179"
+                    "url": "https://files.pythonhosted.org/packages/bd/82/232fb591cd15e9ab88cee8cd196edb716128f3b0e74c24a5f5cc8112aa7d/pyocr-0.8.1.tar.gz",
+                    "sha256": "02aa03b10e0d40b1b29af8394f9c1320f3dab5e0eeae4c1938b3054ce7f66f65"
                 }
             ]
         },
