@@ -1,0 +1,12 @@
+diff --git a/setup.py b/setup.py
+index 4773ffd1..b4c03e1d 100755
+--- a/setup.py
++++ b/setup.py
+@@ -90,7 +90,6 @@ Main features are:
+         "openpaperwork-gtk",
+         "pycountry",
+         "pyocr >= 0.3.0",
+-        "python-dateutil",
+         "python-Levenshtein",
+         "pyxdg >= 0.25",
+         "paperwork-backend>={}".format(version),
