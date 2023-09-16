@@ -24,6 +24,7 @@
         "--env=LIBO_FLATPAK=1"
     ],
     "modules": [
+        "shared-modules/libreoffice-7.5.4.2.json",
         "shared-modules/setuptools-65.6.3.json",
         "shared-modules/scikit-learn-1.2.0.json",
         "shared-modules/sane-backends-1.1.1.json",
