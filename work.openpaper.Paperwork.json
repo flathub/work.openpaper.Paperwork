@@ -33,7 +33,7 @@
             "name": "python-distro",
             "buildsystem": "simple",
             "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"distro\" --no-build-isolation"
+                "pip3 install --disable-pip-version-check --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"distro\" --no-build-isolation"
             ],
             "sources": [
                 {
@@ -47,7 +47,7 @@
             "name": "python3-scikit-build",
             "buildsystem": "simple",
             "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"scikit-build\" --no-build-isolation"
+                "pip3 install --disable-pip-version-check --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"scikit-build\" --no-build-isolation"
             ],
             "sources": [
                 {
@@ -60,18 +60,6 @@
                     "url": "https://files.pythonhosted.org/packages/53/ab/82a39a3a7c16bc5bc3369dff693c52f609efed014833a9a09ea81580374e/scikit_build-0.16.4-py3-none-any.whl",
                     "sha256": "c7041071d1b75a23754a54688e9cbe7c45b86197e1ac09dc472bd254246fc5ab"
                 }
-            ]
-        },
-        {
-            "name": "python-Levenshtein",
-            "buildsystem": "simple",
-            "build-commands": ["python3 setup.py install --prefix=/app --root=/"],
-            "sources": [
-                 {
-                    "type": "archive",
-                    "url": "https://pypi.python.org/packages/42/a9/d1785c85ebf9b7dfacd08938dd028209c34a0ea3b1bcdb895208bd40a67d/python-Levenshtein-0.12.0.tar.gz",
-                    "sha256": "033a11de5e3d19ea25c9302d11224e1a1898fe5abd23c61c7c360c25195e3eb1"
-                 }
             ]
         },
         {
@@ -149,6 +137,30 @@
             ]
         },
         {
+            "name": "python3-rich",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --disable-pip-version-check --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"rich\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/bf/25/2d88e8feee8e055d015343f9b86e370a1ccbec546f2865c98397aaef24af/markdown_it_py-2.2.0-py3-none-any.whl",
+                    "sha256": "5a35f8d1870171d9acc47b99612dc146129b631baf04970128b568f190d0cc30"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl",
+                    "sha256": "84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/42/5c/f44fc88bad850c4a20711a3349ec0e8bc50fece8d8b32c962d2aab70ea2b/rich-13.3.3-py3-none-any.whl",
+                    "sha256": "540c7d6d26a1178e8e8b37e9ba44573a3cd1464ff6348b99ee7061b95d1c6333"
+                }
+            ]
+        },
+        {
             "name": "python-whoosh",
             "buildsystem": "simple",
             "build-commands": ["python3 setup.py install --prefix=/app --root=/"],
@@ -213,14 +225,49 @@
             ]
         },
         {
+            "name": "python3-setuptools_scm",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"setuptools_scm[toml]\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/ed/35/a31aed2993e398f6b09a790a181a7927eb14610ee8bbf02dc14d31677f1c/packaging-23.0-py3-none-any.whl",
+                    "sha256": "714ac14496c3e68c99c29b00845f7a2b85f3bb6f1078fd9f72fd20f0570002b2"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/1d/66/8f42c941be949ef2b22fe905d850c794e7c170a526023612aad5f3a121ad/setuptools_scm-7.1.0-py3-none-any.whl",
+                    "sha256": "73988b6d848709e2af142aa48c986ea29592bbcfca5375678064708205253d8e"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/31/25/5abcd82372d3d4a3932e1fa8c3dbf9efac10cc7c0d16e78467460571b404/typing_extensions-4.5.0-py3-none-any.whl",
+                    "sha256": "fb33085c39dd998ac16d1431ebc293a8b3eedd00fd4a32de0ff79002c19511b4"
+                }
+            ]
+        },
+        {
+            "name": "python3-certifi",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"certifi\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/71/4c/3db2b8021bd6f2f0ceb0e088d6b2d49147671f25832fb17970e9b583d742/certifi-2022.12.7-py3-none-any.whl",
+                    "sha256": "4ad3232f5e926d6718ec31cfc1fcadfde020920e278684144551c91769c7bc18"
+                }
+            ]
+        },
+        {
             "name": "python-pyocr",
             "buildsystem": "simple",
-            "build-options": {
-                "env": {
-                    "ENABLE_SETUPTOOLS_SCM": "0"
-                }
-            },
-            "build-commands": ["python3 ./setup.py install --prefix=/app --root=/"],
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --prefix=${FLATPAK_DEST} --no-build-isolation ."
+            ],
             "ensure-writable": [
                 "/lib/python*/site-packages/easy-install.pth",
                 "/lib/python*/site-packages/setuptools.pth"
@@ -255,7 +302,7 @@
             "buildsystem": "simple",
             "build-commands": [
                 "make version",
-                "pip3 install --prefix=/app --no-deps ."
+                "pip3 install --disable-pip-version-check --prefix=/app --no-deps ."
             ],
             "sources": [
                 {
@@ -268,65 +315,22 @@
         },
 
         {
-            "name": "python-openpaperwork-core",
-            "buildsystem": "simple",
-            "build-commands": ["python3 setup.py install --prefix=/app --root=/"],
+            "name": "python-paperwork",
+            "make-install-args": ["PIP_ARGS=--verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} --no-build-isolation"],
+            "no-autogen": true,
+            "ensure-writable": ["/lib/python*/site-packages/easy-install.pth","/lib/python*/site-packages/setuptools.pth"],
+            "post-install": ["paperwork-gtk install --icon_base_dir=/app/share/icons --data_base_dir=/app/share"],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/c2/b1/0b102f529227acd7ffef6d20de2c1329b641ce63660c1c0d4b73ee398a8c/openpaperwork-core-2.1.2.tar.gz",
-                    "sha256": "6404cf57712ea710e4370fa1072c4e8ef4cb77eb454765732986d49b07bb1113"
-                }
-            ]
-        },
-        {
-            "name": "python-openpaperwork-gtk",
-            "buildsystem": "simple",
-            "build-commands": ["python3 setup.py install --prefix=/app --root=/"],
-            "sources": [
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/World/OpenPaperwork/paperwork.git",
+                    "tag": "2.2.0",
+                    "disable-shallow-clone": true
+                },
                 {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/10/b0/e987cf4dca0b7f3cd85b4f29929e63d18535060dc81552f3606e05ec408e/openpaperwork-gtk-2.1.2.tar.gz",
-                    "sha256": "2823900a9399cfbd09d357582f02642ed32ab3186ad2f356be06ab299f07eac5"
-                }
-            ]
-        },
-        {
-            "name": "python-paperwork-backend",
-            "buildsystem": "simple",
-            "build-commands": ["python3 setup.py install --prefix=/app --root=/"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/20/42/97ce76fb6020a34a85294efe722433b41c88368c38c53711e064680a3a95/paperwork-backend-2.1.2.tar.gz",
-                    "sha256": "4ca4eb6d8ed956f095fef79cb77024f73bb7f8676b716166b059c94f9bf39351"
-                }
-            ]
-        },
-        {
-            "name": "python-paperwork-shell",
-            "buildsystem": "simple",
-            "build-commands": ["python3 setup.py install --prefix=/app --root=/"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/5a/a4/43460222fc09d49e68a702e4a2fb35f0c406d360021ceccfc81fec55c65d/paperwork-shell-2.1.2.tar.gz",
-                    "sha256": "4cf908d16e306fd0a250bb493985697df3d65c493d2db9831f7975fde00269a0"
-                }
-            ]
-        },
-        {
-            "name": "python-paperwork-gtk",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/",
-                "paperwork-gtk install --icon_base_dir=/app/share/icons --data_base_dir=/app/share"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/76/43/f1f7fb79518e8d31ccdf8e9c9746adf4b55390d82f71d7800ea2f13edb56/paperwork-2.1.2.tar.gz",
-                    "sha256": "93a313653fa3d41cef7d4d0cc03c0afbc2f47b7c06c47a95ca2dc9053300c771"
+                    "type": "file",
+                    "url": "https://download.openpaper.work/data/paperwork/master_f54081bb/data.tar.gz",
+                    "sha256": "cbfe25a675bfb81e6733a3f426a42973703aee2e7de3ac291b4f7210805864a8"
                 }
             ]
         }
