@@ -207,7 +207,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/World/OpenPaperwork/libinsane.git",
-                    "tag": "1.0.9",
+                    "tag": "1.0.10",
                     "disable-shallow-clone": true
                 }
             ]
