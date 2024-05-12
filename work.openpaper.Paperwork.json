@@ -324,13 +324,17 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/World/OpenPaperwork/paperwork.git",
-                    "tag": "2.2.2",
+                    "tag": "2.2.3",
                     "disable-shallow-clone": true
                 },
                 {
                     "type": "file",
                     "url": "https://download.openpaper.work/data/paperwork/master_f54081bb/data.tar.gz",
                     "sha256": "cbfe25a675bfb81e6733a3f426a42973703aee2e7de3ac291b4f7210805864a8"
+                },
+                {
+                    "type": "patch",
+                    "path": "metainfo.xml.patch"
                 }
             ]
         }
