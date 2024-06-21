@@ -35,7 +35,7 @@
                 {
                     "type": "git",
                     "url": "https://git.libreoffice.org/core",
-                    "tag": "libreoffice-7.5.4.2",
+                    "tag": "libreoffice-24.2.4.2",
                     "disable-fsckobjects": true
                 },
                 {
