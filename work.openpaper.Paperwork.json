@@ -316,7 +316,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/World/OpenPaperwork/paperwork.git",
-                    "tag": "2.2.3",
+                    "tag": "2.2.4",
                     "disable-shallow-clone": true
                 },
                 {
